@@ -1,9 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
-#import scipy as sci
 
 from secant import secant_method
-from bisection_method import bisection_method
 from newton_raphson import newton_raphson
 
 from trapezoidal_method import trapezoidal_rule
@@ -33,7 +31,6 @@ def Q1() -> float:   #1.4053
 
     q1_x = max(q1_newton_raphson, q1_secant)
     return q1_x * CONST_1
-
 
 
 def Q2() -> float:  
@@ -67,6 +64,7 @@ def Q3() -> float:  # [1.8276, 0.6552, 1.9655]
     q3_x = q3_gaussian_elimination[0]
     return q3_x * CONST_3
 
+
 def Q4() -> float:
     points = [(1.3, 3.6984), (1.4, 3.9043)]
     # x_points = [1.2, 1.3, 1.4, 1.5, 1.6, 3.5095, 3.6984, 3.9043, 4.1295, 4.3756]
@@ -82,12 +80,9 @@ def Q4() -> float:
     return q4_x * CONST_4
 
 
-
-
-
-
 def rounding_function(x: float) -> int:
     return int(np.abs(np.round(x)))
+
 
 def formula1(L: int) -> int:
     """Defects as a function of Lines of code"""
@@ -95,11 +90,13 @@ def formula1(L: int) -> int:
     D = 4.86 + 0.018*L
     return D
 
+
 def formula2(V: int) -> int:
     """Defects as a function of Volume metric (language dependent)"""
     V = rounding_function(V)
     D = V / 3000
     return D
+
 
 def formula3(L: int) -> int:
     """Defects as a function of Lines of code (language LOC dependent)"""
@@ -108,11 +105,13 @@ def formula3(L: int) -> int:
     D = L*A[0] + L*A[1]*np.log(L) + L*A[2]*np.log(L)**2
     return D
 
+
 def formula4(L: int) -> int:
     """Defects as a function of Lines of code"""
     L = rounding_function(L)
     D = 4.2 + 0.0015*L**(4/3)
     return D
+
 
 def formula5(L: int) -> int:
     """Defects as a function of Lines of code"""
@@ -136,9 +135,8 @@ if __name__ == '__main__':
     ]
 
     formula_x.sort()
-    # plt.xticks(formula_x, ['#1', '#2', '#3', '#4'])
-
-    # find `y` values for each of the heuristics using `x` values
+    
+    # find `y` values for each of the formulas using `x` values
     formula_y1 = [formula1(x) for x in formula_x]
     formula_y2 = [formula2(x) for x in formula_x]
     formula_y3 = [formula3(x) for x in formula_x]
@@ -160,23 +158,6 @@ if __name__ == '__main__':
     plt.savefig('./plot.png')
     plt.show()
 
-
-
-    # formula_x.sort()  # sort `x` values in ascending order
-    # plt.xticks(formula_x, ['#1', '#2', '#3'])
-
-    
-
-    # x_values = np.linspace(-2, 2, 500)
-    # y_values =  Q1(x_values)
-
-    # plt.plot(x_values, y_values, label='f(x)')
-    # plt.axhline(0, color='black', linestyle='--')  # קו האפס
-    # plt.xlabel("x")
-    # plt.ylabel("f(x)")
-    # plt.legend()
-    # plt.grid()
-    # # plt.show()
 
 
 
